@@ -43,29 +43,31 @@ class _Ballon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
+      behavior: HitTestBehavior.opaque,
       onTap: onTap,
-      child: Container(
-        decoration: ShapeDecoration(
-          shadows: shadows,
-          color: backgroundColor,
-          shape: _BalloonShape(
-            tooltipDirection,
-            Offset.zero,
-            borderRadius,
-            arrowBaseWidth,
-            arrowTipDistance,
-            borderColor,
-            borderWidth,
-            // left,
-            // top,
-            // right,
-            // bottom,
-            arrowLength,
+      child: IgnorePointer(
+        child: Container(
+          decoration: ShapeDecoration(
+            shadows: shadows,
+            color: backgroundColor,
+            shape: _BalloonShape(
+              tooltipDirection,
+              Offset.zero,
+              borderRadius,
+              arrowBaseWidth,
+              arrowTipDistance,
+              borderColor,
+              borderWidth,
+              // left,
+              // top,
+              // right,
+              // bottom,
+              arrowLength,
+            ),
           ),
+          padding: ballonPadding,
+          child: content,
         ),
-        padding: ballonPadding,
-        child: content,
       ),
     );
   }
